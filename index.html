@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Bhalekar | Premium Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0d0d0d',
+                            dark: '#141414',
+                            light: '#F5F2EB',
+                            muted: '#A39E93',
+                            accent: '#D4AF37' // Subtle gold for hover states
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(13,13,13,0.3), rgba(13,13,13,1)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop')",
+                        'service-1': "linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.7) 100%), url('https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=2000&auto=format&fit=crop')",
+                        'service-2': "linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.7) 100%), url('https://images.unsplash.com/photo-1518444065439-e91e671463bd?q=80&w=2000&auto=format&fit=crop')",
+                        'service-3': "linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.7) 100%), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop')",
+                        'service-4': "linear-gradient(to right, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0.7) 100%), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #F5F2EB;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background-color: #F5F2EB;
+            color: #0d0d0d;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-row {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-row:hover {
+            background-position: center;
+            transform: scale(1.01);
+        }
+
+        .service-row:hover h3 {
+            color: #F5F2EB;
+        }
+
+        .nav-scrolled {
+            background-color: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-brand-light selection:text-brand-black">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 pt-8 pb-6 px-6 md:px-12 flex justify-between items-center">
+        <!-- Social Links (Left) -->
+        <div class="hidden md:flex gap-6 text-xs font-semibold tracking-[0.2em] uppercase text-brand-muted">
+            <a href="https://github.com/AdityaBhalekar" target="_blank" class="hover:text-brand-light transition-colors">GitHub</a>
+            <a href="#" class="hover:text-brand-light transition-colors">LinkedIn</a>
+        </div>
+
+        <!-- Logo (Center) -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center cursor-pointer" onclick="window.scrollTo(0,0)">
+            <h1 class="font-serif text-2xl md:text-3xl tracking-widest text-brand-light">ADITYA.</h1>
+            <p class="text-[9px] font-sans tracking-[0.3em] text-brand-muted uppercase mt-1">Embedded & AI Engineer</p>
+        </div>
+
+        <!-- Menu Button (Right) -->
+        <button class="text-xs font-semibold tracking-[0.2em] uppercase text-brand-light hover:text-brand-muted transition-colors flex items-center gap-3">
+            <span class="hidden md:block">Menu</span>
+            <div class="space-y-1.5 w-6">
+                <div class="h-px bg-current w-full"></div>
+                <div class="h-px bg-current w-full"></div>
+            </div>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="absolute inset-0 bg-brand-black/40"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <p class="text-xs md:text-sm font-sans tracking-[0.3em] uppercase text-brand-light mb-8 fade-in-up">Hi, I'm Aditya Bhalekar</p>
+            <h2 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-brand-light fade-in-up" style="transition-delay: 200ms;">
+                Architecting the <br>
+                <i class="font-light text-brand-muted">future</i> of embedded <br>
+                systems & AI.
+            </h2>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 fade-in-up" style="transition-delay: 400ms;">
+            <div class="w-px h-16 bg-gradient-to-b from-brand-light/50 to-transparent"></div>
+            <span class="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-muted">Scroll to explore</span>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 md:py-48 px-6 md:px-12 max-w-6xl mx-auto text-center fade-in-up">
+        <h3 class="font-sans text-xs md:text-sm tracking-[0.3em] uppercase text-brand-muted mb-16">( About Me )</h3>
+        
+        <p class="font-serif text-3xl md:text-4xl lg:text-5xl leading-relaxed text-brand-light max-w-5xl mx-auto">
+            I am an Electronics and Telecommunication student operating at the bright intersection of IoT and Edge AI. From crafted sensor integrations to deploying local language models, my commitment is to bridge robust hardware with intelligent software.
+        </p>
+        
+        <p class="font-sans text-sm md:text-base leading-loose text-brand-muted mt-12 max-w-3xl mx-auto font-light">
+            My technical foundation relies on architectures that solve real problems: premier microcontrollers (ESP32), custom deep learning algorithms, seamless AWS cloud integrations, and developing hardware solutions for complex environments.
+        </p>
+        
+        <div class="mt-16 flex flex-wrap justify-center gap-8 md:gap-16">
+            <div class="text-center">
+                <span class="block font-serif text-4xl text-brand-light mb-2">ENTC</span>
+                <span class="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-muted">B.Tech Specialization</span>
+            </div>
+            <div class="text-center">
+                <span class="block font-serif text-4xl text-brand-light mb-2">2028</span>
+                <span class="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-muted">Expected Graduation</span>
+            </div>
+            <div class="text-center">
+                <span class="block font-serif text-4xl text-brand-light mb-2">IoT</span>
+                <span class="text-[10px] font-sans tracking-[0.2em] uppercase text-brand-muted">Cloud Architecture</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Projects Section -->
+    <section id="services" class="pb-32 w-full fade-in-up">
+        <div class="px-6 md:px-12 mb-16 text-center">
+            <h3 class="font-sans text-xs md:text-sm tracking-[0.3em] uppercase text-brand-muted">( Featured Projects )</h3>
+        </div>
+
+        <div class="flex flex-col w-full border-t border-white/10">
+            
+            <!-- Service Row 1 -->
+            <a href="https://github.com/AdityaBhalekar" target="_blank" class="service-row group relative block w-full py-16 md:py-24 px-6 md:px-12 border-b border-white/10 bg-service-1 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="md:col-span-5">
+                        <h2 class="font-serif text-4xl md:text-6xl text-brand-muted group-hover:text-brand-light transition-colors duration-500 mb-2">EDGE AI & VISION</h2>
+                        <span class="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted/70 block">Real-Time ISL Translation</span>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="font-sans text-sm md:text-base leading-relaxed text-brand-light/80 font-light">
+                            Engineered a sign-to-text translation framework tailored for real-time edge processing. Utilized MediaPipe for spatial extraction and trained a Transformer-CTC architecture for dynamic sequencing.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-right">
+                        <span class="font-sans text-xs tracking-[0.2em] uppercase text-brand-light border-b border-brand-light pb-1 group-hover:pl-4 transition-all duration-300">View Source</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Service Row 2 -->
+            <a href="https://github.com/AdityaBhalekar" target="_blank" class="service-row group relative block w-full py-16 md:py-24 px-6 md:px-12 border-b border-white/10 bg-service-2 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="md:col-span-5">
+                        <h2 class="font-serif text-4xl md:text-6xl text-brand-muted group-hover:text-brand-light transition-colors duration-500 mb-2">CLOUD IOT</h2>
+                        <span class="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted/70 block">LPG Hazard Detection</span>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="font-sans text-sm md:text-base leading-relaxed text-brand-light/80 font-light">
+                            Designed a smart safety system integrating MQ6 sensors with an ESP32. Architected a cloud-based alert mechanism using AWS IoT Core, Lambda, and SNS for ultra-low latency automated hazard notifications.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-right">
+                        <span class="font-sans text-xs tracking-[0.2em] uppercase text-brand-light border-b border-brand-light pb-1 group-hover:pl-4 transition-all duration-300">View Source</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Service Row 3 -->
+            <a href="https://github.com/AdityaBhalekar" target="_blank" class="service-row group relative block w-full py-16 md:py-24 px-6 md:px-12 border-b border-white/10 bg-service-3 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="md:col-span-5">
+                        <h2 class="font-serif text-4xl md:text-6xl text-brand-muted group-hover:text-brand-light transition-colors duration-500 mb-2">NETWORK ANALYSIS</h2>
+                        <span class="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted/70 block">Crowd & Footfall Monitor</span>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="font-sans text-sm md:text-base leading-relaxed text-brand-light/80 font-light">
+                            Developed a non-intrusive crowd density monitor utilizing the ESP32 in promiscuous mode. Estimated footfall accurately by analyzing local Wi-Fi probe requests without storing PII.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-right">
+                        <span class="font-sans text-xs tracking-[0.2em] uppercase text-brand-light border-b border-brand-light pb-1 group-hover:pl-4 transition-all duration-300">View Source</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Service Row 4 -->
+            <a href="https://github.com/AdityaBhalekar" target="_blank" class="service-row group relative block w-full py-16 md:py-24 px-6 md:px-12 border-b border-white/10 bg-service-4 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="md:col-span-5">
+                        <h2 class="font-serif text-4xl md:text-6xl text-brand-muted group-hover:text-brand-light transition-colors duration-500 mb-2">LOCAL LLM</h2>
+                        <span class="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-muted/70 block">Offline AI Assistant</span>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="font-sans text-sm md:text-base leading-relaxed text-brand-light/80 font-light">
+                            Built a highly secure, privacy-first Python voice assistant designed entirely for local execution. Integrated Ollama to run lightweight LLMs (Gemma, Llama) natively without cloud API dependencies.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 text-left md:text-right">
+                        <span class="font-sans text-xs tracking-[0.2em] uppercase text-brand-light border-b border-brand-light pb-1 group-hover:pl-4 transition-all duration-300">View Source</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Internships & Experience -->
+    <section class="py-24 px-6 md:px-12 max-w-6xl mx-auto text-center fade-in-up">
+        <h3 class="font-sans text-xs md:text-sm tracking-[0.3em] uppercase text-brand-muted mb-16">( Academic Experience )</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-left max-w-4xl mx-auto">
+            <div class="border-t border-white/20 pt-8">
+                <h4 class="font-serif text-2xl md:text-3xl text-brand-light mb-2">Cisco-AICTE Program</h4>
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-brand-muted mb-6">Virtual Networking Intern • 2025</p>
+                <p class="font-sans text-sm md:text-base leading-relaxed text-brand-light/70 font-light">
+                    Intensive virtual training focused on fundamental computer networking, routing protocols, and enterprise topology design in simulated environments.
+                </p>
+            </div>
+            
+            <div class="border-t border-white/20 pt-8">
+                <h4 class="font-serif text-2xl md:text-3xl text-brand-light mb-2">Emertxe Internship</h4>
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-brand-muted mb-6">Virtual IoT Intern • 2025</p>
+                <p class="font-sans text-sm md:text-base leading-relaxed text-brand-light/70 font-light">
+                    Practical exposure to embedded C, Arduino, MQTT protocols, sensor integration, and ThingsBoard cloud architecture.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-brand-dark pt-24 pb-12 px-6 md:px-12 border-t border-white/5 mt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+            
+            <!-- Footer Branding -->
+            <div class="md:col-span-4 flex flex-col justify-between">
+                <div>
+                    <h1 class="font-serif text-3xl md:text-4xl tracking-widest text-brand-light mb-4">ADITYA.</h1>
+                    <p class="font-sans text-sm leading-relaxed text-brand-muted font-light max-w-xs">
+                        B.Tech ENTC student building the next generation of embedded and AI solutions.
+                    </p>
+                </div>
+                <div class="mt-12 md:mt-0 flex gap-6">
+                    <a href="https://github.com/AdityaBhalekar" class="text-brand-muted hover:text-brand-light transition-colors"><span class="font-sans text-xs tracking-[0.2em] uppercase">GitHub</span></a>
+                    <a href="#" class="text-brand-muted hover:text-brand-light transition-colors"><span class="font-sans text-xs tracking-[0.2em] uppercase">LinkedIn</span></a>
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="md:col-span-4 flex flex-col gap-4 font-serif text-xl text-brand-light">
+                <a href="#about" class="hover:text-brand-muted transition-colors w-fit">About</a>
+                <a href="#services" class="hover:text-brand-muted transition-colors w-fit">Edge AI & Vision</a>
+                <a href="#services" class="hover:text-brand-muted transition-colors w-fit">Cloud IoT</a>
+                <a href="#services" class="hover:text-brand-muted transition-colors w-fit">Network Analysis</a>
+                <a href="#services" class="hover:text-brand-muted transition-colors w-fit">Local LLM</a>
+                <a href="#contact" class="hover:text-brand-muted transition-colors w-fit">Contacts</a>
+            </div>
+
+            <!-- Footer Contact -->
+            <div class="md:col-span-4 flex flex-col gap-6">
+                <div>
+                    <a href="mailto:bhalekaradity9@gmail.com" class="font-serif text-2xl md:text-3xl text-brand-light hover:text-brand-muted transition-colors block mb-2">bhalekaradity9@gmail.com</a>
+                    <a href="tel:+917972324873" class="font-sans text-base text-brand-muted hover:text-brand-light transition-colors block">+91 7972324873</a>
+                </div>
+                <p class="font-sans text-xs text-brand-muted/70 leading-relaxed font-light mt-4">
+                    Based in Pune, Maharashtra, India.<br>
+                    Available for global remote opportunities.
+                </p>
+            </div>
+            
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex gap-6">
+                <a href="#" class="font-sans text-[10px] tracking-[0.1em] text-brand-muted/70 hover:text-brand-light uppercase">Privacy Policy</a>
+                <a href="#" class="font-sans text-[10px] tracking-[0.1em] text-brand-muted/70 hover:text-brand-light uppercase">Terms of Service</a>
+            </div>
+            <p class="font-sans text-[10px] tracking-[0.1em] text-brand-muted/70 uppercase text-center md:text-right">
+                Copyright © 2026 — Aditya Bhalekar
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+                nav.classList.remove('pt-8', 'pb-6');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                nav.classList.add('pt-8', 'pb-6');
+            }
+        });
+
+        // Intersection Observer for Fade-In Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((elem) => {
+            observer.observe(elem);
+        });
+    </script>
+</body>
+</html>
